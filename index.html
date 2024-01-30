@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRI4cncFxko2wQ0Xn6L_cCKaoMAXk0G1e0wnw&usqp=CAU">
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        .container{
+            height: 100vh;
+            width: 100%;
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin:auto;
+            box-shadow: rgb(218, 220, 222) 0px 20px 30px -10px;
+        }
+        .calculator{
+            display: grid;
+            grid-template-columns: repeat(4,80px);
+            column-gap: 15px;
+            row-gap: 25px;
+            border: none;
+            background-color: black;
+            padding: 30px;
+            border: none;
+            border-radius:50px;
+            box-shadow:  0px 0px 15px white; 
+        }
+        input{
+            grid-column: span 4;
+            height: 70px;
+            border: none;
+            border-radius: 40px;
+            padding: 30px;
+            font-size: 30px;
+            color: black;
+            text-align: end;
+            margin-bottom: 10px;
+        }
+        button{
+            margin: auto;
+            height: 60px;
+            width: 60px;
+            border-radius: 50%;
+            font-size: 20px;
+            background-color: grey;
+            border: none;
+            color: white;
+            
+        }
+        button:hover{
+            cursor: pointer;
+            background-color: orange;
+            transition: 0.6s;
+            scale: 1.1;
+            color:white;
+            background-color: black;
+            border:2px solid white;
+        }
+        #equalbutton{
+            width: 180px;
+            border-radius: 50px;
+            grid-column: span 2;
+            color:black;
+            background-color: white;
+        }
+        #equalbutton:hover{
+            color:white;
+            background-color: black;
+            border:2px solid white;
+        }
+        .operators{
+            background-color: orange;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="calculator">
+            <input type="text" placeholder="0" id="output">
+            <button onclick="Clear()" class="operators">C</button>
+            <button onclick="Delete()" class="operators">DEL</button>
+            <button onclick="display('%')" class="operators">%</button>
+            <button onclick="display('/')" class="operators">÷</button>
+            <button onclick="display('7')">7</button>
+            <button onclick="display('8')">8</button>
+            <button onclick="display('9')">9</button>
+            <button onclick="display('*')" class="operators">×</button>
+            <button onclick="display('4')">4</button>
+            <button onclick="display('5')">5</button>
+            <button onclick="display('6')">6</button>
+            <button onclick="display('-')" class="operators">-</button>
+            <button onclick="display('1')">1</button>
+            <button onclick="display('2')">2</button>
+            <button onclick="display('3')">3</button>
+            <button onclick="display('+')" class="operators">+</button>
+            <button onclick="display('.')">.</button>
+            <button onclick="display('0')">0</button>
+            <button onclick="Calculate()" id="equalbutton">=</button>
+        </div>
+    </div>
+
+
+    <script>
+        let output=document.getElementById('output');
+
+        function display(num){
+            output.value += num;
+        }
+
+        function Calculate(){
+            try{
+                output.value = eval(output.value);
+            }
+            catch(err){
+                output.value='Invalid';
+            }
+        }
+
+        function Clear(){
+            output.value = "";
+        }
+
+        function Delete(){
+            output.value = output.value.slice(0,-1);
+        }
+
+    </script>
+
+
+</body>
+</html>
